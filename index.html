@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tạp hóa Quân Công | Cửa hàng tạp hóa uy tín tại Bắc Ninh</title>
+    <style>
+      :root {
+        --primary: #d4582c;
+        --primary-dark: #b83f1a;
+        --secondary: #fff4f0;
+        --text: #1f1f1f;
+        --muted: #666;
+        --white: #fff;
+        --black: #111;
+        --shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text);
+        background: #fff;
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        background: var(--black);
+        color: var(--white);
+        font-size: 14px;
+        padding: 12px 0;
+      }
+
+      .topbar-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        z-index: 10;
+        padding: 16px 0;
+      }
+
+      .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: var(--primary);
+      }
+
+      .menu {
+        display: flex;
+        gap: 28px;
+        font-size: 15px;
+        color: var(--text);
+      }
+
+      .menu a {
+        transition: 0.3s ease;
+        font-weight: 500;
+      }
+
+      .menu a:hover {
+        color: var(--primary);
+      }
+
+      .contact-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        border-radius: 999px;
+        background: var(--primary);
+        color: var(--white);
+        font-weight: 600;
+        transition: 0.3s ease;
+      }
+
+      .contact-btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #fff4f0 0%, #ffe8df 100%);
+        padding: 80px 0 60px;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .hero-text h1 {
+        font-size: clamp(2.2rem, 5vw, 3.8rem);
+        line-height: 1.15;
+        margin: 0 0 16px;
+        color: var(--text);
+      }
+
+      .hero-text .highlight {
+        color: var(--primary);
+      }
+
+      .hero-text p {
+        font-size: 1.05rem;
+        color: var(--muted);
+        margin-bottom: 24px;
+        line-height: 1.7;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+
+      .stats {
+        display: flex;
+        gap: 24px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.6rem;
+        color: var(--primary);
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .hero-image {
+        position: relative;
+      }
+
+      .hero-image .main-card {
+        background: var(--white);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        border: 3px solid #fff;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .section-head {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .section-head .eyebrow {
+        color: var(--primary);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+
+      .section-head h2 {
+        margin: 8px 0 12px;
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+      }
+
+      .section-head p {
+        max-width: 650px;
+        margin: 0 auto;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .feature-card {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
+        padding: 26px 22px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        transition: 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .icon {
+        width: 50px;
+        height: 50px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: #ffe8df;
+        color: var(--primary);
+        font-size: 1.6rem;
+        margin-bottom: 16px;
+      }
+
+      .feature-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.25rem;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .about {
+        background: linear-gradient(180deg, #fff 0%, #fff9f6 100%);
+      }
+
+      .about-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: center;
+      }
+
+      .about-box {
+        background: var(--white);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .about-content {
+        padding: 36px 28px;
+      }
+
+      .about-content h3 {
+        font-size: clamp(1.6rem, 2vw, 2.2rem);
+        margin: 0 0 16px;
+      }
+
+      .about-content p {
+        color: var(--muted);
+        margin: 0 0 16px;
+        line-height: 1.8;
+      }
+
+      .check-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .check-list li {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+      }
+
+      .check-list li::before {
+        content: "✓";
+        width: 24px;
+        height: 24px;
+        display: inline-grid;
+        place-items: center;
+        background: #ffe8df;
+        color: var(--primary);
+        border-radius: 50%;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+      }
+
+      .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .product-card {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        transition: 0.3s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .product-card .image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, #ffe8df, #fff4f0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+      }
+
+      .product-card .info {
+        padding: 18px 16px;
+      }
+
+      .product-card h3 {
+        margin: 0 0 6px;
+        font-size: 1.15rem;
+      }
+
+      .product-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .testimonial-wrap {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .testimonial {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
+        padding: 24px 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .quote {
+        font-size: 1rem;
+        color: var(--text);
+        margin-bottom: 18px;
+        line-height: 1.6;
+        font-style: italic;
+      }
+
+      .person {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #d4582c, #ff8a65);
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        color: white;
+        font-size: 0.9rem;
+      }
+
+      .person strong {
+        display: block;
+      }
+
+      .person span {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .contact-section {
+        background: linear-gradient(135deg, var(--text) 0%, #2e2e2e 100%);
+        color: var(--white);
+        padding: 60px 0;
+      }
+
+      .contact-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: start;
+      }
+
+      .contact-info h2 {
+        margin: 0 0 24px;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+      }
+
+      .contact-info p {
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0 0 20px;
+        line-height: 1.8;
+      }
+
+      .info-item {
+        margin-bottom: 18px;
+        display: flex;
+        gap: 14px;
+      }
+
+      .info-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        font-size: 1.3rem;
+        flex-shrink: 0;
+      }
+
+      .info-content strong {
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .info-content {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .map-container {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 360px;
+        border: none;
+      }
+
+      .footer {
+        background: #0a0a0a;
+        color: rgba(255, 255, 255, 0.7);
+        padding: 30px 0;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 900px) {
+        .hero-inner,
+        .about-inner,
+        .contact-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-inner {
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .menu {
+          gap: 12px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .contact-btn,
+        .hero-actions .contact-btn {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 540px) {
+        .hero {
+          padding-top: 50px;
+          padding-bottom: 40px;
+        }
+
+        .section {
+          padding: 50px 0;
+        }
+
+        .topbar-inner {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+        }
+
+        .menu {
+          gap: 10px;
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <span>Tạp hóa Quân Công - Cửa hàng uy tín tại Bắc Ninh</span>
+        <span>📞 Gọi để được tư vấn</span>
+      </div>
+    </div>
+
+    <header class="nav">
+      <div class="container nav-inner">
+        <div class="logo">🏪 Quân Công</div>
+        <nav class="menu">
+          <a href="#trangchu">Trang chủ</a>
+          <a href="#sanpham">Sản phẩm</a>
+          <a href="#gioithieu">Giới thiệu</a>
+          <a href="#khanhan">Khách hàng</a>
+          <a href="#lienhe">Liên hệ</a>
+        </nav>
+        <a href="#lienhe" class="contact-btn">Liên hệ ngay</a>
+      </div>
+    </header>
+
+    <section id="trangchu" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>
+            Tạp hóa <span class="highlight">Quân Công</span><br />
+            Địa chỉ tin cậy của mọi gia đình
+          </h1>
+          <p>
+            Chúng tôi cung cấp đa dạng các loại mặt hàng từ thực phẩm, đồ gia dụng, quần áo
+            đến các nhu yếu phẩm hàng ngày với chất lượng tốt và giá cả hợp lý.
+          </p>
+          <div class="hero-actions">
+            <a href="#sanpham" class="contact-btn">Xem sản phẩm</a>
+            <a href="#gioithieu" class="contact-btn" style="background: transparent; border: 2px solid var(--primary); color: var(--primary);">Tìm hiểu thêm</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>15+</strong>
+              <span>Năm kinh doanh</span>
+            </div>
+            <div class="stat">
+              <strong>5000+</strong>
+              <span>Khách hàng</span>
+            </div>
+            <div class="stat">
+              <strong>500+</strong>
+              <span>Loại sản phẩm</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <div class="main-card">
+            <img
+              src="https://lh5.googleusercontent.com/p/AF1QipOXo-lZ5Yp8y0WZvXvQqkBcH0bXq4tnPqH5S_8w=w408-h306-k-no"
+              alt="Tạp hóa Quân Công"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: #f9f6f3;">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Tại sao chọn chúng tôi</div>
+          <h2>Ưu điểm của tạp hóa Quân Công</h2>
+        </div>
+
+        <div class="features">
+          <div class="feature-card">
+            <div class="icon">🛒</div>
+            <h3>Hàng hóa đa dạng</h3>
+            <p>Cung cấp hơn 500 loại sản phẩm từ thực phẩm tươi sống, đồ gia dụng đến các nhu yếu phẩm hàng ngày.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">💰</div>
+            <h3>Giá cả hợp lý</h3>
+            <p>Luôn cạnh tranh giá tốt nhất, có khuyến mãi thường xuyên cho khách hàng thân thiết.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">👥</div>
+            <h3>Phục vụ tốt</h3>
+            <p>Đội ngũ nhân viên thân thiện, tư vấn nhiệt tình, luôn sẵn sàng giúp đỡ khách hàng.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">⭐</div>
+            <h3>Chất lượng đảm bảo</h3>
+            <p>Tất cả sản phẩm đều được kiểm tra kỹ lưỡng, đảm bảo an toàn cho sức khỏe gia đình.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sanpham" class="section about">
+      <div class="container about-inner">
+        <div class="about-box">
+          <img
+            src="https://images.unsplash.com/photo-1578365746619-e3fb5e8b8a49?auto=format&fit=crop&w=600&q=80"
+            alt="Sản phẩm tạp hóa"
+          />
+        </div>
+
+        <div class="about-content">
+          <div class="eyebrow">Sản phẩm</div>
+          <h3>Những mặt hàng chúng tôi cung cấp</h3>
+          <p>
+            Tạp hóa Quân Công chuyên cung cấp các loại sản phẩm thiết yếu cho cuộc sống hàng ngày
+            của mỗi gia đình ở địa phương.
+          </p>
+          <p>
+            Từ thực phẩm tươi sống, đồ ăn vặt, đồ dùng nhà bếp, quần áo, giày dép,
+            mỹ phẩm đến các sản phẩm gia dụng khác, chúng tôi đều có đủ.
+          </p>
+
+          <ul class="check-list">
+            <li>Thực phẩm tươi sống - Rau, quả, thịt cá</li>
+            <li>Đồ ăn vặt - Bánh kẹo, nước uống</li>
+            <li>Quần áo, giày dép, phụ kiện</li>
+            <li>Đồ dùng nhà bếp và gia dụng</li>
+            <li>Mỹ phẩm, sản phẩm chăm sóc</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Danh mục sản phẩm</div>
+          <h2>Những gì bạn có thể tìm thấy</h2>
+        </div>
+
+        <div class="products">
+          <div class="product-card">
+            <div class="image">🍎</div>
+            <div class="info">
+              <h3>Thực phẩm tươi</h3>
+              <p>Rau quả, thịt cá tươi sống hàng ngày</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="image">🍪</div>
+            <div class="info">
+              <h3>Đồ ăn vặt</h3>
+              <p>Bánh kẹo, snack, nước uống</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="image">👕</div>
+            <div class="info">
+              <h3>Quần áo, Giày dép</h3>
+              <p>Thời trang cho cả gia đình</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="image">🍳</div>
+            <div class="info">
+              <h3>Đồ gia dụng</h3>
+              <p>Dụng cụ nhà bếp và gia dụng</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="image">💄</div>
+            <div class="info">
+              <h3>Mỹ phẩm</h3>
+              <p>Sản phẩm chăm sóc cá nhân</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="image">🧼</div>
+            <div class="info">
+              <h3>Vệ sinh nhà cửa</h3>
+              <p>Hóa chất vệ sinh và tẩy rửa</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gioithieu" class="section" style="background: #f9f6f3;">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Về chúng tôi</div>
+          <h2>Giới thiệu tạp hóa Quân Công</h2>
+          <p>Một cửa hàng tạp hóa với lịch sử phục vụ cộng đồng hơn 15 năm</p>
+        </div>
+
+        <div class="testimonial-wrap">
+          <div class="testimonial">
+            <div class="quote">
+              "Tạp hóa Quân Công là địa chỉ tin cậy của gia đình tôi suốt những năm qua.
+              Hàng hóa đa dạng, giá cả hợp lý và nhân viên rất thân thiện."
+            </div>
+            <div class="person">
+              <div class="avatar">T</div>
+              <div>
+                <strong>Thị Thanh</strong><br />
+                <span>Khách hàng</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <div class="quote">
+              "Mỗi lần đi mua hàng, cửa hàng luôn sạch sẽ, gọn gàng.
+              Các nhân viên tư vấn giúp đỡ rất nhiệt tình, đó là lý do tôi hay ghé."
+            </div>
+            <div class="person">
+              <div class="avatar">H</div>
+              <div>
+                <strong>Hoàng Anh</strong><br />
+                <span>Khách hàng</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <div class="quote">
+              "Tôi sống gần đây nên mua hàng rất tiện lợi. Có lúc quên mang tiền, chủ cửa hàng
+              cũng ghi nợ rất thoải mái. Quả là một cửa hàng tốt bụng lắm!"
+            </div>
+            <div class="person">
+              <div class="avatar">N</div>
+              <div>
+                <strong>Ngọc Linh</strong><br />
+                <span>Khách hàng</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="khanhan" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Tại sao khách hàng yêu thích</div>
+          <h2>Những điều khác biệt</h2>
+        </div>
+
+        <div class="features">
+          <div class="feature-card">
+            <div class="icon">🏪</div>
+            <h3>Vị trí thuận lợi</h3>
+            <p>Nằm ở trung tâm thôn Am, xã Nhã Nam, dễ dàng tiếp cận cho mọi gia đình trong khu vực.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">🤝</div>
+            <h3>Tình cảm gia đình</h3>
+            <p>Chúng tôi coi khách hàng như người thân. Phục vụ lâu năm, quen biết mọi người trong khu vực.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">📱</div>
+            <h3>Linh hoạt thanh toán</h3>
+            <p>Chấp nhận tiền mặt, chuyển khoản và có dịch vụ ghi nợ cho khách hàng quen thuộc.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">🎁</div>
+            <h3>Khuyến mãi thường xuyên</h3>
+            <p>Có các chương trình khuyến mãi, giảm giá theo mùa vụ cho khách hàng thân thiết.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lienhe" class="contact-section">
+      <div class="container contact-inner">
+        <div class="contact-info">
+          <h2>Thông tin liên hệ</h2>
+          <p>Hãy ghé thăm chúng tôi hoặc liên hệ để được tư vấn. Chúng tôi luôn sẵn sàng phục vụ bạn!</p>
+
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-content">
+              <strong>Địa chỉ</strong>
+              Thôn Am, Xã Nhã Nam, Tỉnh Bắc Ninh, Việt Nam
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div class="info-content">
+              <strong>Điện thoại</strong>
+              <a href="tel:0968554618" style="color: rgba(255,255,255,0.9);">0968 554 618</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">🕐</div>
+            <div class="info-content">
+              <strong>Giờ mở cửa</strong>
+              Từ 6:00 - 21:00 hàng ngày
+            </div>
+          </div>
+
+          <a href="tel:0968554618" class="contact-btn" style="margin-top: 18px; display: inline-block;">Gọi liên hệ ngay</a>
+        </div>
+
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.9968819276146!2d105.82046307623003!3d21.22892208058646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab0e8e0e0e01%3A0x1234567890abcdef!2sNh%C3%A3%20Nam%2C%20B%E1%BA%AFc%20Ninh!5e0!3m2!1svi!2s!4v1234567890"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© 2024 Tạp hóa Quân Công. Địa chỉ: Thôn Am, Xã Nhã Nam, Tỉnh Bắc Ninh | Điện thoại: 0968 554 618</p>
+      </div>
+    </footer>
+  </body>
+</html>
