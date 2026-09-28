@@ -1,2 +1,183 @@
-# quan-cong-store
-Website giới thiệu tạp hóa Quân Công - cửa hàng bán đa dạng mặt hàng tại Bắc Ninh
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tạp hóa Quân Công - đa dạng mặt hàng, đặt hàng online tại thôn Am, xã Nhã Nam, Bắc Ninh." />
+  <title>Tạp hóa Quân Công | Đặt hàng online</title>
+  <style>
+    :root {
+      --green: #20a464;
+      --green-dark: #087f4c;
+      --yellow: #ffd43b;
+      --orange: #ff7a2f;
+      --pink: #ff5f8f;
+      --cream: #fffdf4;
+      --ink: #173b35;
+      --muted: #657773;
+      --white: #fff;
+      --shadow: 0 14px 35px rgba(18, 92, 65, .12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; color: var(--ink); background: var(--cream); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(1120px, calc(100% - 32px)); margin: auto; }
+    .topbar { background: var(--green-dark); color: white; font-size: 14px; padding: 9px 0; }
+    .topbar-inner { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .nav { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.95); backdrop-filter: blur(8px); border-bottom: 1px solid #e8f0df; }
+    .nav-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap; }
+    .logo { color: var(--green-dark); font-size: 1.55rem; font-weight: 800; }
+    .logo span { color: var(--orange); }
+    .menu { display: flex; gap: 24px; font-weight: 600; font-size: 14px; }
+    .menu a:hover { color: var(--orange); }
+    .btn { border: 0; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; background: var(--orange); color: white; font-weight: 700; transition: .2s; }
+    .btn:hover { transform: translateY(-2px); filter: brightness(.95); }
+    .btn.green { background: var(--green); }
+    .btn.yellow { background: var(--yellow); color: var(--ink); }
+    .hero { overflow: hidden; padding: 78px 0 68px; background: linear-gradient(135deg, #fff6bf, #dcf8ce 48%, #c9f4ed); }
+    .hero-inner { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 44px; }
+    .eyebrow { color: var(--pink); text-transform: uppercase; letter-spacing: .13em; font-size: 12px; font-weight: 800; }
+    h1 { font-size: clamp(2.35rem, 5vw, 4rem); line-height: 1.1; margin: 10px 0 18px; }
+    h1 strong { color: var(--green-dark); }
+    .hero p { color: #46665d; font-size: 1.08rem; max-width: 620px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 26px 0; }
+    .stats { display: flex; gap: 28px; flex-wrap: wrap; }
+    .stat strong { display: block; color: var(--green-dark); font-size: 1.65rem; }
+    .stat span { color: var(--muted); font-size: .9rem; }
+    .hero-card { position: relative; background: white; padding: 10px; border-radius: 28px; box-shadow: var(--shadow); transform: rotate(2deg); }
+    .hero-card img { width: 100%; height: 360px; object-fit: cover; border-radius: 20px; }
+    .badge { position: absolute; left: -18px; bottom: 22px; padding: 12px 17px; border-radius: 16px; background: var(--pink); color: white; font-weight: 800; transform: rotate(-5deg); box-shadow: var(--shadow); }
+    .section { padding: 72px 0; }
+    .section-head { text-align: center; margin-bottom: 38px; }
+    .section-head h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); margin: 7px 0 10px; }
+    .section-head p { color: var(--muted); max-width: 650px; margin: auto; }
+    .features, .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+    .card { background: white; border: 1px solid #e4f0e6; border-radius: 20px; padding: 24px; box-shadow: 0 7px 20px rgba(35, 115, 74, .06); }
+    .feature { border-top: 5px solid var(--yellow); }
+    .feature:nth-child(2) { border-color: var(--pink); }
+    .feature:nth-child(3) { border-color: var(--green); }
+    .feature:nth-child(4) { border-color: var(--orange); }
+    .icon { font-size: 2rem; margin-bottom: 8px; }
+    .card h3 { margin: 4px 0 7px; }
+    .card p { color: var(--muted); margin: 0; }
+    .product { padding: 0; overflow: hidden; position: relative; }
+    .product-top { height: 140px; display: grid; place-items: center; font-size: 3.7rem; background: linear-gradient(135deg, #fff0a8, #d7f6ce); }
+    .product:nth-child(2) .product-top { background: linear-gradient(135deg, #ffd7e5, #ffe9be); }
+    .product:nth-child(3) .product-top { background: linear-gradient(135deg, #c8edff, #d6f8d2); }
+    .product:nth-child(4) .product-top { background: linear-gradient(135deg, #ead8ff, #ffd8be); }
+    .product:nth-child(5) .product-top { background: linear-gradient(135deg, #ffe0aa, #ffcadf); }
+    .product:nth-child(6) .product-top { background: linear-gradient(135deg, #c9fff0, #dce3ff); }
+    .product-info { padding: 18px; }
+    .product-info h3 { font-size: 1.05rem; }
+    .product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 14px; }
+    .price { color: var(--green-dark); font-weight: 800; }
+    .add-btn { border: 0; background: var(--green); color: white; border-radius: 9px; padding: 8px 11px; font-weight: 700; cursor: pointer; }
+    .about { background: white; }
+    .about-inner, .contact-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; }
+    .about-image { border-radius: 25px; overflow: hidden; box-shadow: var(--shadow); }
+    .about-image img { width: 100%; height: 360px; object-fit: cover; }
+    .check { list-style: none; padding: 0; }
+    .check li { margin: 10px 0; font-weight: 600; }
+    .check li::before { content: "✓"; display: inline-grid; place-items: center; width: 23px; height: 23px; margin-right: 9px; border-radius: 50%; color: white; background: var(--green); }
+    .contact { background: var(--green-dark); color: white; }
+    .contact p { color: #d9f5e5; }
+    .contact-item { display: flex; gap: 12px; align-items: flex-start; margin: 16px 0; }
+    .contact-icon { font-size: 1.35rem; }
+    .map { overflow: hidden; border-radius: 20px; box-shadow: var(--shadow); }
+    .map iframe { display: block; width: 100%; height: 350px; border: 0; }
+    footer { background: #075a38; color: #d8f5e5; text-align: center; padding: 25px 0; font-size: .9rem; }
+    .cart-float { position: fixed; z-index: 30; right: 22px; bottom: 22px; border: 0; border-radius: 50px; padding: 14px 19px; background: var(--pink); color: white; font-weight: 800; box-shadow: 0 10px 25px rgba(197, 45, 95, .3); cursor: pointer; }
+    .cart-count { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 20px; background: white; color: var(--pink); margin-left: 5px; }
+    dialog { width: min(560px, calc(100% - 24px)); border: 0; border-radius: 22px; padding: 0; box-shadow: 0 25px 80px rgba(0,0,0,.25); }
+    dialog::backdrop { background: rgba(9, 47, 33, .6); }
+    .modal { padding: 25px; }
+    .modal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .close { border: 0; background: #edf7ed; border-radius: 50%; width: 34px; height: 34px; cursor: pointer; font-size: 1.1rem; }
+    #cart-items { margin: 15px 0; max-height: 210px; overflow: auto; }
+    .cart-row { display: flex; justify-content: space-between; gap: 10px; padding: 10px 0; border-bottom: 1px solid #e7eee8; }
+    .cart-row button { border: 0; color: #d74970; background: transparent; cursor: pointer; }
+    .total { text-align: right; color: var(--green-dark); font-size: 1.2rem; font-weight: 800; margin: 15px 0; }
+    .form-grid { display: grid; gap: 10px; }
+    input, textarea { width: 100%; padding: 12px 13px; border: 1px solid #d5e4d9; border-radius: 10px; font: inherit; }
+    textarea { min-height: 75px; resize: vertical; }
+    .empty { color: var(--muted); text-align: center; padding: 18px; }
+    @media (max-width: 850px) { .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; } .nav-inner { justify-content: center; } .hero-card { max-width: 620px; margin: auto; } }
+    @media (max-width: 560px) { .menu { gap: 11px; font-size: 12px; justify-content: center; } .hero { padding-top: 50px; } .hero-card img { height: 270px; } .contact-btn { width: 100%; } }
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="container topbar-inner"><span>🌈 Tạp hóa Quân Công - Mua sắm vui vẻ mỗi ngày</span><span>📞 0968 554 618</span></div></div>
+  <header class="nav"><div class="container nav-inner">
+    <a class="logo" href="#trangchu">🏪 Quân <span>Công</span></a>
+    <nav class="menu"><a href="#trangchu">Trang chủ</a><a href="#sanpham">Sản phẩm</a><a href="#gioithieu">Giới thiệu</a><a href="#lienhe">Liên hệ</a></nav>
+    <button class="btn green" type="button" onclick="openCart()">🛒 Đặt hàng</button>
+  </div></header>
+
+  <main>
+    <section id="trangchu" class="hero"><div class="container hero-inner">
+      <div><div class="eyebrow">Tươi vui • Tiện lợi • Giá tốt</div><h1>Tạp hóa <strong>Quân Công</strong><br>đủ đầy cho cả gia đình!</h1><p>Đa dạng thực phẩm, đồ ăn vặt, đồ gia dụng và nhu yếu phẩm. Chọn món ngay trên website, gửi đơn hàng nhanh chóng cho cửa hàng.</p><div class="actions"><a class="btn" href="#sanpham">Xem sản phẩm 🛍️</a><button class="btn yellow" type="button" onclick="openCart()">Đặt hàng online</button></div><div class="stats"><div class="stat"><strong>500+</strong><span>loại mặt hàng</span></div><div class="stat"><strong>6:00–21:00</strong><span>mở cửa mỗi ngày</span></div><div class="stat"><strong>0968 554 618</strong><span>liên hệ đặt hàng</span></div></div></div>
+      <div class="hero-card"><img src="https://lh5.googleusercontent.com/p/AF1QipOXo-lZ5Yp8y0WZvXvQqkBcH0bXq4tnPqH5S_8w=w408-h306-k-no" alt="Tạp hóa Quân Công"><div class="badge">⭐ Khách quen tin chọn</div></div>
+    </div></section>
+
+    <section class="section"><div class="container"><div class="section-head"><div class="eyebrow">Vì sao chọn Quân Công?</div><h2>Mua gì cũng vui, ghé là có!</h2></div><div class="features">
+      <div class="card feature"><div class="icon">🛒</div><h3>Hàng hóa đa dạng</h3><p>Thực phẩm, bánh kẹo, đồ uống, gia dụng và nhiều nhu yếu phẩm cho gia đình.</p></div>
+      <div class="card feature"><div class="icon">💛</div><h3>Giá cả hợp lý</h3><p>Sản phẩm thiết yếu với mức giá phù hợp, rõ ràng và thân thiện.</p></div>
+      <div class="card feature"><div class="icon">🚀</div><h3>Đặt hàng nhanh</h3><p>Chọn sản phẩm online, gửi thông tin đơn hàng bằng Zalo hoặc gọi trực tiếp.</p></div>
+      <div class="card feature"><div class="icon">😊</div><h3>Phục vụ tận tâm</h3><p>Luôn vui vẻ, nhiệt tình hỗ trợ khách hàng tại thôn Am và khu vực lân cận.</p></div>
+    </div></div></section>
+
+    <section id="sanpham" class="section about"><div class="container"><div class="section-head"><div class="eyebrow">Danh mục sản phẩm</div><h2>Chọn món bạn cần</h2><p>Bấm “Thêm vào giỏ” để tạo đơn hàng online. Giá dưới đây là giá tham khảo, cửa hàng sẽ xác nhận lại khi nhận đơn.</p></div><div class="products">
+      <article class="card product"><div class="product-top">🍎</div><div class="product-info"><h3>Thực phẩm tươi</h3><p>Rau quả, thịt cá và thực phẩm thiết yếu.</p><div class="product-bottom"><span class="price">Từ 10.000đ</span><button class="add-btn" onclick="addToCart('Thực phẩm tươi', 10000)">+ Thêm</button></div></div></article>
+      <article class="card product"><div class="product-top">🍪</div><div class="product-info"><h3>Bánh kẹo & đồ ăn vặt</h3><p>Bánh, kẹo, snack cho cả nhà.</p><div class="product-bottom"><span class="price">Từ 5.000đ</span><button class="add-btn" onclick="addToCart('Bánh kẹo & đồ ăn vặt', 5000)">+ Thêm</button></div></div></article>
+      <article class="card product"><div class="product-top">🥤</div><div class="product-info"><h3>Nước uống</h3><p>Nước suối, nước ngọt và sữa.</p><div class="product-bottom"><span class="price">Từ 7.000đ</span><button class="add-btn" onclick="addToCart('Nước uống', 7000)">+ Thêm</button></div></div></article>
+      <article class="card product"><div class="product-top">🍳</div><div class="product-info"><h3>Đồ gia dụng</h3><p>Dụng cụ nhà bếp và vật dụng gia đình.</p><div class="product-bottom"><span class="price">Từ 15.000đ</span><button class="add-btn" onclick="addToCart('Đồ gia dụng', 15000)">+ Thêm</button></div></div></article>
+      <article class="card product"><div class="product-top">🧼</div><div class="product-info"><h3>Vệ sinh nhà cửa</h3><p>Nước giặt, nước rửa chén và đồ tẩy rửa.</p><div class="product-bottom"><span class="price">Từ 12.000đ</span><button class="add-btn" onclick="addToCart('Vệ sinh nhà cửa', 12000)">+ Thêm</button></div></div></article>
+      <article class="card product"><div class="product-top">👕</div><div class="product-info"><h3>Quần áo & phụ kiện</h3><p>Một số mặt hàng thời trang tiện dụng.</p><div class="product-bottom"><span class="price">Từ 30.000đ</span><button class="add-btn" onclick="addToCart('Quần áo & phụ kiện', 30000)">+ Thêm</button></div></div></article>
+    </div></div></section>
+
+    <section id="gioithieu" class="section"><div class="container about-inner"><div class="about-image"><img src="https://images.unsplash.com/photo-1578365746619-e3fb5e8b8a49?auto=format&fit=crop&w=800&q=80" alt="Các mặt hàng tạp hóa"></div><div><div class="eyebrow">Về cửa hàng</div><h2>Gần gũi như một người hàng xóm</h2><p>Tạp hóa Quân Công tại thôn Am, xã Nhã Nam, tỉnh Bắc Ninh phục vụ các mặt hàng thiết yếu cho gia đình với sự tận tâm và thân thiện.</p><ul class="check"><li>Hàng hóa phong phú, dễ tìm</li><li>Giá cả phù hợp với mọi gia đình</li><li>Nhận đơn hàng online qua website</li><li>Hỗ trợ tư vấn qua điện thoại</li></ul></div></div></section>
+
+    <section id="lienhe" class="section contact"><div class="container contact-inner"><div><div class="eyebrow" style="color:var(--yellow)">Ghé thăm chúng tôi</div><h2>Liên hệ đặt hàng</h2><p>Hãy gửi đơn hàng online hoặc gọi cho cửa hàng. Chúng tôi sẽ liên hệ xác nhận sản phẩm, số lượng và phí giao hàng.</p><div class="contact-item"><span class="contact-icon">📍</span><div><strong>Địa chỉ</strong><br>Thôn Am, xã Nhã Nam, tỉnh Bắc Ninh</div></div><div class="contact-item"><span class="contact-icon">📞</span><div><strong>Điện thoại</strong><br><a href="tel:0968554618">0968 554 618</a></div></div><div class="contact-item"><span class="contact-icon">🕐</span><div><strong>Giờ mở cửa</strong><br>6:00 – 21:00 hàng ngày</div></div><button class="btn yellow" onclick="openCart()">Mở giỏ hàng & đặt ngay</button></div><div class="map"><iframe title="Bản đồ Tạp hóa Quân Công" src="https://www.google.com/maps?q=Th%C3%B4n%20Am%2C%20Nhã%20Nam%2C%20Bắc%20Ninh&output=embed" loading="lazy"></iframe></div></div></section>
+  </main>
+  <footer>© 2026 Tạp hóa Quân Công • Thôn Am, xã Nhã Nam, tỉnh Bắc Ninh • 0968 554 618</footer>
+
+  <button class="cart-float" onclick="openCart()">🛒 Giỏ hàng <span class="cart-count" id="cart-count">0</span></button>
+  <dialog id="cart-dialog"><div class="modal"><div class="modal-head"><h2>🛒 Đơn hàng của bạn</h2><button class="close" onclick="closeCart()">×</button></div><div id="cart-items"><div class="empty">Giỏ hàng đang trống. Hãy chọn sản phẩm bên trên nhé!</div></div><div class="total">Tạm tính: <span id="cart-total">0đ</span></div><form class="form-grid" id="order-form"><input id="customer-name" required placeholder="Họ và tên *"><input id="customer-phone" required type="tel" placeholder="Số điện thoại *"><textarea id="customer-address" required placeholder="Địa chỉ nhận hàng hoặc ghi chú *"></textarea><button class="btn green" type="submit">Gửi đơn qua Zalo</button><small>Đơn hàng sẽ mở Zalo để bạn gửi nội dung cho cửa hàng. Nếu không dùng Zalo, vui lòng gọi 0968 554 618.</small></form></div></dialog>
+  <script>
+    const cart = [];
+    const phone = '0968554618';
+    const money = value => new Intl.NumberFormat('vi-VN').format(value) + 'đ';
+    function addToCart(name, price) {
+      const found = cart.find(item => item.name === name);
+      if (found) found.quantity += 1; else cart.push({ name, price, quantity: 1 });
+      updateCart();
+      openCart();
+    }
+    function removeFromCart(index) { cart.splice(index, 1); updateCart(); }
+    function updateCart() {
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      document.getElementById('cart-count').textContent = count;
+      document.getElementById('cart-total').textContent = money(total);
+      const list = document.getElementById('cart-items');
+      if (!cart.length) { list.innerHTML = '<div class="empty">Giỏ hàng đang trống. Hãy chọn sản phẩm bên trên nhé!</div>'; return; }
+      list.innerHTML = cart.map((item, index) => `<div class="cart-row"><span>${item.name} × ${item.quantity}</span><strong>${money(item.price * item.quantity)} <button type="button" onclick="removeFromCart(${index})">Xóa</button></strong></div>`).join('');
+    }
+    function openCart() { updateCart(); document.getElementById('cart-dialog').showModal(); }
+    function closeCart() { document.getElementById('cart-dialog').close(); }
+    document.getElementById('order-form').addEventListener('submit', event => {
+      event.preventDefault();
+      if (!cart.length) { alert('Vui lòng chọn ít nhất một sản phẩm.'); return; }
+      const name = document.getElementById('customer-name').value.trim();
+      const customerPhone = document.getElementById('customer-phone').value.trim();
+      const address = document.getElementById('customer-address').value.trim();
+      const items = cart.map(item => `${item.name} x${item.quantity}`).join(', ');
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const message = `Xin chào Tạp hóa Quân Công!%0AĐặt hàng: ${items}%0ATạm tính: ${money(total)}%0AHọ tên: ${name}%0Điện thoại: ${customerPhone}%0AĐịa chỉ/ghi chú: ${address}`;
+      window.open(`https://zalo.me/${phone}?text=${message}`, '_blank');
+    });
+  </script>
+</body>
+</html>
